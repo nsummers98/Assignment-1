@@ -29,11 +29,6 @@ public:
 	string get_spanish_suit() const;
 	string get_spanish_rank() const;
 
-	/*
-	These are the only functions you'll need to code
-	for this class. See the implementations of the two
-	functions above to get an idea of how to proceed.
-	*/
 	string get_english_suit() const;
 	string get_english_rank() const;
 
@@ -58,9 +53,10 @@ public:
 	Hand();
 
 	// You decide what functions you'll need...
-
+	double get_value() const;
 private:
-	// You decide what fields you'll need...
+	vector<Card> cards;
+	double handTotal;
 };
 
 
@@ -71,6 +67,8 @@ public:
 	Player(int m);
 
 	// You decide what functions you'll need...
+	int get_balance() const;
+
 	int bet(int m);
 	int win(int m);
 	int lose(int m);

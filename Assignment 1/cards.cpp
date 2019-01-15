@@ -194,6 +194,12 @@ Hand class
 // Implemente the member functions of the Hand class here.
 
 
+Hand::Hand()
+{
+	vector<Card> cards[1];
+}
+
+
 
 /* *************************************************
 Player class
@@ -206,6 +212,11 @@ Constructor for the Player class.
 Player::Player(int m)
 {
 	money = m;
+}
+
+int Player::get_balance() const
+{
+	return money;
 }
 
 /*
