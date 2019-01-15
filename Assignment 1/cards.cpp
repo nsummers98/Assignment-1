@@ -107,16 +107,69 @@ string Card::get_spanish_rank() const {
 
 
 
-// Accessor: returns a string with the suit of the card in English 
-// This is just a stub! Modify it to your liking.
+// Accessor: returns a string with the suit of the card in English
 string Card::get_english_suit() const {
-	return "";
+	string englishSuit;
+
+	switch (suit)
+	{
+	case OROS:
+		englishSuit = "coins";
+		break;
+	case COPAS:
+		englishSuit = "cups";
+		break;
+	case ESPADAS:
+		englishSuit = "spades";
+		break;
+	case BASTOS:
+		englishSuit = "clubs";
+		break;
+	default: break;
+	}
+
+	return englishSuit;
 }
 
-// Accessor: returns a string with the rank of the card in English 
-// This is just a stub! Modify it to your liking.
+// Accessor: returns a string with the rank of the card in English
 string Card::get_english_rank() const {
-	return "";
+	string englishRank;
+
+	switch (rank) {
+	case AS:
+		englishRank = "Ace";
+		break;
+	case DOS:
+		englishRank = "Two";
+		break;
+	case TRES:
+		englishRank = "Three";
+		break;
+	case CUATRO:
+		englishRank = "Four";
+		break;
+	case CINCO:
+		englishRank = "Five";
+		break;
+	case SEIS:
+		englishRank = "Six";
+		break;
+	case SIETE:
+		englishRank = "Seven";
+		break;
+	case SOTA:
+		englishRank = "Jack";
+		break;
+	case CABALLO:
+		englishRank = "Knight";
+		break;
+	case REY:
+		englishRank = "King";
+		break;
+	default: break;
+	}
+
+	return englishRank;
 }
 
 
