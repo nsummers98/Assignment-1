@@ -71,6 +71,9 @@ public:
 	Player(int m);
 
 	// You decide what functions you'll need...
+	int bet(int m);
+	int win(int m);
+	int lose(int m);
 
 private:
 	int money;

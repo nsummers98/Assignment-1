@@ -198,4 +198,48 @@ Hand class
 /* *************************************************
 Player class
 ************************************************* */
-// Implemente the member functions of the Player class here.
+
+/*
+Constructor for the Player class.
+@param m represents the player's new balance
+*/
+Player::Player(int m)
+{
+	money = m;
+}
+
+/*
+Function sees if Player has enough money to make bet
+@param m represents the amount the player wants to bet
+*/
+int Player::bet(int m)
+{
+	if (m > money)
+	{
+		cout << "Insufficient Funds" << endl;
+		return 0;
+	}
+	else return m;
+}
+
+/*
+Function adds bet amount to Player's balance
+@param m represents the bet amount to be added to the balance
+@return the amount of the bet in order to determine overall game progress
+*/
+int Player::win(int m)
+{
+	money += m;
+	return m;
+}
+
+/*
+Function subtracts bet amount from Player's balance
+@param m represents the bet amount to be subtracted from the balance
+@return the amount of the bet in order to determine overall game progress
+*/
+int Player::lose(int m)
+{
+	money -= m;
+	return m;
+}
