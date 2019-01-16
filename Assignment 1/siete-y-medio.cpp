@@ -32,7 +32,7 @@ int winner(Hand h1, Hand h2)
 int main() {
 	Player p1(100);
 
-	while (p1.get_balance() > 0 || p1.get_balance() < 999)
+	while (p1.get_balance() > 0 && p1.get_balance() < 999)
 	{
 		Hand playerHand;
 		Hand dealerHand;
@@ -65,20 +65,20 @@ int main() {
 		}
 		cout << "The dealer's total is " << dealerHand.get_value() << "." << endl;
 
-		switch(winner(playerHand, dealerHand))
+		int win = winner(playerHand, dealerHand);
+		if (win == 0)
 		{
-		case 0:
 			cout << "You win $" << bet << ". Congratulations.\n" << endl;
 			p1.win(bet);
-		case 1:
+		}
+		else if (win == 1 || win == 2)
+		{
 			cout << "You lose $" << bet << ". Too bad.\n" << endl;
 			p1.lose(bet);
-		case 2:
-			cout << "You lose $" << bet << ". Too bad.\n" << endl;
-			p1.lose(bet);
-		case 3:
+		}
+		else if (win == 3)
+		{
 			cout << "Round is a tie!\n" << endl;
-		default:break;
 		}
 
 	}
