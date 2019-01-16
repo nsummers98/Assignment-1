@@ -53,6 +53,7 @@ public:
 	Hand();
 
 	// You decide what functions you'll need...
+	Card get_card(int n) const;
 	double get_value() const;
 private:
 	vector<Card> cards;

@@ -191,14 +191,36 @@ bool Card::operator < (Card card2) const {
 /* *************************************************
 Hand class
 ************************************************* */
-// Implemente the member functions of the Hand class here.
 
-
+/*
+Default constructor for a Hand object
+Creates a vector of Cards of size 1
+*/
 Hand::Hand()
 {
 	vector<Card> cards[1];
 }
 
+Card Hand::get_card(int n) const
+{
+	return cards[n];
+}
+
+
+double Hand::get_value() const
+{
+	double val = 0;
+
+	for (int i = 0; i < cards.size(); ++i)
+	{
+		double rank = cards[i].get_rank();
+		if (rank < 8)
+			val += rank;
+		else val += 0.5;
+	}
+
+	return val;
+}
 
 
 /* *************************************************
