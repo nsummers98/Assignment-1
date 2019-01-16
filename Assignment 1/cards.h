@@ -28,9 +28,11 @@ public:
 	// Accessors 
 	string get_spanish_suit() const;
 	string get_spanish_rank() const;
+	string print_spanish_card() const;
 
 	string get_english_suit() const;
 	string get_english_rank() const;
+	string print_english_card() const;
 
 	// Converts card rank to number.
 	// The possible returns are: 1, 2, 3, 4, 5, 6, 7, 10, 11 and 12
@@ -53,8 +55,13 @@ public:
 	Hand();
 
 	// You decide what functions you'll need...
+	string print_hand() const;
 	Card get_card(int n) const;
 	double get_value() const;
+	int get_size() const;
+
+	void deal_card();
+
 private:
 	vector<Card> cards;
 	double handTotal;

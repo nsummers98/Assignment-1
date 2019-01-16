@@ -106,6 +106,13 @@ string Card::get_spanish_rank() const {
 }
 
 
+string Card::print_spanish_card() const
+{
+	string card = get_spanish_rank() + " de " + get_spanish_suit();
+	return card;
+}
+
+
 
 // Accessor: returns a string with the suit of the card in English
 string Card::get_english_suit() const {
@@ -173,6 +180,13 @@ string Card::get_english_rank() const {
 }
 
 
+string Card::print_english_card() const
+{
+	string card = get_english_rank() + " of " + get_english_suit();
+	return card;
+}
+
+
 
 // Assigns a numerical value to card based on rank.
 // AS=1, DOS=2, ..., SIETE=7, SOTA=10, CABALLO=11, REY=12
@@ -198,7 +212,18 @@ Creates a vector of Cards of size 1
 */
 Hand::Hand()
 {
-	vector<Card> cards[1];
+	Card c;
+	cards.push_back(c);
+}
+
+string Hand::print_hand() const
+{
+	string hand = "";
+	for (int i = 0; i < cards.size(); ++i)
+	{
+		hand += "	" + get_card(i).print_spanish_card() + "        (" + get_card(i).print_english_card() + ").\n" ;
+	}
+	return hand;
 }
 
 Card Hand::get_card(int n) const
@@ -220,6 +245,19 @@ double Hand::get_value() const
 	}
 
 	return val;
+}
+
+int Hand::get_size() const
+{
+	return cards.size();
+}
+
+void Hand::deal_card()
+{
+	cout << "\nNew Card:" << endl;
+	Card c;
+	cards.push_back(c);
+	cout << "	" << cards[cards.size() - 1].print_spanish_card() << "        (" << cards[cards.size() - 1].print_english_card() + ").\n\n";
 }
 
 
