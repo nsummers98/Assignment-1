@@ -12,6 +12,7 @@ using namespace std;
 
 // Non member functions declarations (if any)
 int winner(Hand h1, Hand h2);
+void waitForInput();
 
 
 // Non member functions implementations (if any)
@@ -27,24 +28,37 @@ int winner(Hand h1, Hand h2)
 		return 3;
 }
 
+void waitForInput()
+{
+	std::cin.ignore();
+	do
+	{
+		std::cout << "\nPress enter key to continue . . .";
+	} while (std::cin.get() != '\n');
+}
+
 
 
 int main() {
 	Player p1(100);
+	int gamecount = 1;
 
 	while (p1.get_balance() > 0 && p1.get_balance() < 999)
 	{
 		Hand playerHand;
 		Hand dealerHand;
-		cout << "You have $" << p1.get_balance() << ". Enter bet: ";
+
+		cout << "          Game " << gamecount << endl;
 
 		int bet;
-		cin >> bet;
-		if (p1.bet(bet) == 0)
-			break;
+		do
+		{
+			cout << "You have $" << p1.get_balance() << ". Enter bet: ";
+			cin >> bet;
+		} while (p1.bet(bet) == 0);
 
 		char res = 'y';
-		while (res == 'y' || res == 'Y')
+		while ((res == 'y' || res == 'Y') && playerHand.get_value() <= 7.5)
 		{
 			cout << "\nYour cards:" << endl;
 			cout << playerHand.print_hand();
@@ -61,9 +75,9 @@ int main() {
 				dealerHand.deal_card();
 			cout << "\n\nDealer's cards: " << endl;
 			cout << dealerHand.print_hand();
+			cout << "The dealer's total is " << dealerHand.get_value() << "." << endl;
 			++n;
 		}
-		cout << "The dealer's total is " << dealerHand.get_value() << "." << endl;
 
 		int win = winner(playerHand, dealerHand);
 		if (win == 0)
@@ -81,8 +95,17 @@ int main() {
 			cout << "Round is a tie!\n" << endl;
 		}
 
+		++gamecount;
 	}
 	
+	if (p1.get_balance() > 0)
+	{
+
+	}
+	else if (p1.get_balance() < 999)
+	{ 
+
+	}
 
 	return 0;
 }
