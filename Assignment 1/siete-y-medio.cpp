@@ -80,14 +80,16 @@ int main() {
 		}
 
 		int n = 0;
-		while (dealerHand.get_value() < 5.5 || (n < 1 && dealerHand.get_value() >= 7))
+		while (dealerHand.get_value() <= 7.5)
 		{
-			if (n > 0)
+			if (n > 0 && dealerHand.get_value() < 5.5)
 				dealerHand.deal_card();
 			cout << "\nDealer's cards: " << endl;
 			cout << dealerHand.print_hand();
 			cout << "\nThe dealer's total is " << dealerHand.get_value() << "." << endl;
 			++n;
+			if (dealerHand.get_value() >= 5.5)
+				break;
 		}
 
 		int win = winner(playerHand, dealerHand);
@@ -122,5 +124,5 @@ int main() {
 
 	cout << "\nBye!" << endl;
 
-	return 0;
+ 	return 0;
 }
