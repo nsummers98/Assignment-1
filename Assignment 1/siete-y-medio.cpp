@@ -18,9 +18,9 @@ void waitForInput();
 // Non member functions implementations (if any)
 int winner(Hand h1, Hand h2)
 {
-	if (h1.get_value() < 7.5 && (h1.get_value() > h2.get_value() || h2.get_value() > 7.5)) // player wins
+	if (h1.get_value() <= 7.5 && (h1.get_value() > h2.get_value() || h2.get_value() > 7.5)) // player wins
 		return 0;
-	if (h2.get_value() < 7.5 && (h2.get_value() > h1.get_value() || h1.get_value() > 7.5)) // dealer wins
+	if (h2.get_value() <= 7.5 && (h2.get_value() > h1.get_value() || h1.get_value() > 7.5)) // dealer wins
 		return 1;
 	if (h1.get_value() > 7.5 && h2.get_value() > 7.5) // both bust
 		return 2;
@@ -74,15 +74,15 @@ int main() {
 					cout << "Bust!" << endl;
 					cout << "Your total is " << playerHand.get_value() << endl;
 					waitForInput();
+					break;
 				}
 			}
-			else break;
 		}
 
 		int n = 0;
-		while (dealerHand.get_value() < 5.5)
+		while (dealerHand.get_value() < 5.5 || (n < 1 && dealerHand.get_value() >= 7))
 		{
-			if (n != 0)
+			if (n > 0)
 				dealerHand.deal_card();
 			cout << "\nDealer's cards: " << endl;
 			cout << dealerHand.print_hand();
