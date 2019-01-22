@@ -42,7 +42,11 @@ void printToDoc(int game, int bet, Player p1, Hand p, Hand d)
 {
 	
 	ofstream fout;
-	fout.open("gamelog.txt", fstream::in | fstream::out | fstream::app);
+	
+	if (game == 1)
+		fout.open("gamelog.txt");
+	else if (game > 1)
+		fout.open("gamelog.txt", fstream::in | fstream::out | fstream::app);
 
 	fout << "-----------------------------------------------" << endl;
 	fout << endl;
@@ -58,7 +62,7 @@ void printToDoc(int game, int bet, Player p1, Hand p, Hand d)
 	fout << "Dealer's total is " << d.get_value() << "." << endl;
 	fout << endl;
 
-	if (p1.get_balance() <= 0 || p1.get_balance() >= 900)
+	if ((p1.get_balance()-bet <= 0 && (winner(p, d) != 0 && winner(p,d) != 3)) || (p1.get_balance() >= 900 && (winner(p,d) != 1 && winner(p,d) != 2)))
 	{
 		fout << "-----------------------------------------------";
 		fout.close();
@@ -120,6 +124,8 @@ int main() {
 				break;
 		}
 
+		printToDoc(gamecount, bet, p1, playerHand, dealerHand);
+		
 		int win = winner(playerHand, dealerHand);
 		cout << endl;
 		if (win == 0)
@@ -137,7 +143,6 @@ int main() {
 			cout << "Round is a tie!\n" << endl;
 		}
 
-		printToDoc(gamecount, bet, p1, playerHand, dealerHand);
 		++gamecount;
 	}
 	
