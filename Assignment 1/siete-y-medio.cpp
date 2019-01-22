@@ -46,7 +46,7 @@ void printToDoc(int game, int bet, Player p1, Hand p, Hand d)
 
 	fout << "-----------------------------------------------" << endl;
 	fout << endl;
-	fout << "Game number: " << game << "Money left: $" << p1.get_balance() << endl;
+	fout << "Game number: " << game << "		Money left: $" << p1.get_balance() << endl;
 	fout << "Bet: " << bet << endl;
 	fout << endl;
 	fout << "Your cards:" << endl;
@@ -137,8 +137,8 @@ int main() {
 			cout << "Round is a tie!\n" << endl;
 		}
 
-		++gamecount;
 		printToDoc(gamecount, bet, p1, playerHand, dealerHand);
+		++gamecount;
 	}
 	
 	if (p1.get_balance() <= 0)
