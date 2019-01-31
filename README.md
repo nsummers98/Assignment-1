@@ -1,6 +1,6 @@
 # Assignment 1 ReadMe
 
-This project is a terminal version of the Spanish card game Siete y Medio, conceptually similar to 
+This project is a terminal version of the Spanish card game *Siete-y-Medio*, conceptually similar to 
 Blackjack but using a Spanish deck known as a *baraja*. This deck is different from a conventional
 deck in that there are only 10 cards of each house: 7 numbered cards and three face cards. The game
 itself differs from Blackjack in that the face cards are only worth half a point each and the aim is 
