@@ -55,7 +55,7 @@ public:
 	Hand();
 
 	// You decide what functions you'll need...
-	string print_hand() const;
+	void print_hand() const;
 	Card get_card(int n) const;
 	double get_value() const;
 	int get_size() const;

@@ -1,6 +1,7 @@
 #include "cards.h"
 #include <cstdlib>
 #include <iostream>
+#include <iomanip>
 
 /*
 You might or might not need these two extra libraries
@@ -216,14 +217,13 @@ Hand::Hand()
 	cards.push_back(c);
 }
 
-string Hand::print_hand() const
+void Hand::print_hand() const
 {
-	string hand = "";
 	for (int i = 0; i < cards.size(); ++i)
 	{
-		hand += "	" + get_card(i).print_spanish_card() + "        (" + get_card(i).print_english_card() + ").\n" ;
+		int char_size = get_card(i).print_spanish_card().length() + get_card(i).print_english_card().length();
+		cout << "	" << get_card(i).print_spanish_card() << setw(38 - char_size) << "(" << get_card(i).print_english_card() << ").\n";
 	}
-	return hand;
 }
 
 Card Hand::get_card(int n) const
@@ -257,7 +257,8 @@ void Hand::deal_card()
 	cout << "\nNew Card:" << endl;
 	Card c;
 	cards.push_back(c);
-	cout << "	" << cards[cards.size() - 1].print_spanish_card() << "        (" << cards[cards.size() - 1].print_english_card() + ").\n\n";
+	int char_size = c.print_spanish_card().length() + c.print_english_card().length();
+	cout << "	" << cards[cards.size() - 1].print_spanish_card() << setw(38 - char_size) << "(" << cards[cards.size() - 1].print_english_card() << ").\n\n";
 }
 
 
