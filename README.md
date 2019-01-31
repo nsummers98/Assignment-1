@@ -15,4 +15,5 @@ to get as close to seven and a half points as possible without going over.
 When I initially created the git repo for this assignment, I did so through Visual Studios 2017. As a 
 result, the solution files, various project files, and .gitignore and .gitattributes files were
 automatically added to the repository without my knowledge. Unbeknownst to me, they remained in the
-repository but were never updated until I published my repository onto GitHub.
+repository but were never updated until I published my repository onto GitHub. I cleared out the files
+unique to Visual Studios, but kept the .gitignore and .gitattributes in the published repository.
