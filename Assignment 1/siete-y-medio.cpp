@@ -7,15 +7,19 @@
 #include "cards.h"
 using namespace std;
 
-// Global constants (if any)
 
-
-// Non member functions declarations (if any)
+// Non member functions declarations
 int winner(Hand h1, Hand h2);
 void waitForInput();
 
 
-// Non member functions implementations (if any)
+// Non member functions implementations
+/*
+Function compares two hands according to the rules of the game to determine if there is a winner and who it is
+@param h1 represents the first hand, in this case the player's
+@param h2 represents the second hand, in this case the dealer's
+@return an int from 0 to 3 corresponding to a possible outcome for a game
+*/
 int winner(Hand h1, Hand h2)
 {
 	if (h1.get_value() <= 7.5 && (h1.get_value() > h2.get_value() || h2.get_value() > 7.5)) // player wins
@@ -28,6 +32,9 @@ int winner(Hand h1, Hand h2)
 		return 3;
 }
 
+/*
+Function waits for the user to press the enter key so that the game does not fly by too fast
+*/
 void waitForInput()
 {
 	do
@@ -125,6 +132,7 @@ int main() {
 	}
 
 	cout << "\nBye!" << endl;
+	waitForInput();
 
  	return 0;
 }

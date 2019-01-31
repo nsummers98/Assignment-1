@@ -51,16 +51,18 @@ private:
 
 class Hand {
 public:
-	// A vector of Cards
+	// Constructor
 	Hand();
 
-	// You decide what functions you'll need...
+	// Accessors
 	Card get_card(int n) const;
 	double get_value() const;
 	int get_size() const;
 
+	// Mutator
 	void deal_card();
 
+	// Operator Overloading
 	friend ostream& operator<<(ostream& os, const Hand h);
 
 private:
@@ -71,22 +73,20 @@ private:
 
 class Player {
 public:
-	// Constructor. 
-	//    Assigns initial amount of money
+	// Constructor
 	Player(int m);
 
-	// You decide what functions you'll need...
+	// Accessors
 	int get_balance() const;
+	void print_to_doc(int game, int bet, int win, Hand p, Hand d) const;
 
-	void print_to_doc(int game, int bet, int win, Hand p, Hand d);
-
+	// Mutators
 	int bet(int m);
 	int win(int m);
 	int lose(int m);
 
 private:
 	int money;
-	// You decide what extra fields (if any) you'll need...
 };
 
 #endif

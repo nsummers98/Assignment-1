@@ -3,12 +3,6 @@
 #include <iostream>
 #include <iomanip>
 
-/*
-You might or might not need these two extra libraries
-#include <iomanip>
-#include <algorithm>
-*/
-
 
 /* *************************************************
 Card class
@@ -107,6 +101,7 @@ string Card::get_spanish_rank() const {
 }
 
 
+// Accessor: returns a string with the entire name of the card in Spanish
 string Card::print_spanish_card() const
 {
 	string card = get_spanish_rank() + " de " + get_spanish_suit();
@@ -181,6 +176,7 @@ string Card::get_english_rank() const {
 }
 
 
+// Accessor: returns a string with the entire name of the card in English
 string Card::print_english_card() const
 {
 	string card = get_english_rank() + " of " + get_english_suit();
@@ -218,12 +214,21 @@ Hand::Hand()
 }
 
 
+/*
+Allows for access to the vector of cards stored in a Hand class
+@param n represents the desired position in the hand of a desired card
+@return the Card object at spot n of the vector
+*/
 Card Hand::get_card(int n) const
 {
 	return cards[n];
 }
 
 
+/*
+Returns the value of the hand according to the rules of the card game
+@return the value of the hand as a double
+*/
 double Hand::get_value() const
 {
 	double val = 0;
@@ -239,11 +244,14 @@ double Hand::get_value() const
 	return val;
 }
 
+
+// Returns the size of the vector of cards
 int Hand::get_size() const
 {
 	return cards.size();
 }
 
+// Deals a new card by creating a new Card object and enlarging and inserting it into the vector
 void Hand::deal_card()
 {
 	cout << "\nNew Card:" << endl;
@@ -267,12 +275,24 @@ Player::Player(int m)
 	money = m;
 }
 
+/*
+Accessor function to return the balance of the player
+@return the balance of the player as an integer
+*/
 int Player::get_balance() const
 {
 	return money;
 }
 
-void Player::print_to_doc(int game, int bet, int win, Hand p, Hand d)
+/*
+Function prints game results to a text file called gamelog.txt
+@param game represents the number of games played this session
+@param bet represents the player's bet for this round
+@param win represents the outcome of the win function to help determine the last game of the session
+@param p represents the player's hand
+@param d represents the dealer's hand
+*/
+void Player::print_to_doc(int game, int bet, int win, Hand p, Hand d) const
 {
 
 	ofstream fout;
@@ -339,6 +359,12 @@ int Player::lose(int m)
 	return m;
 }
 
+/*
+Function overloads the stream output operators and acts as a print function
+@param os represents the output stream
+@param h represents any Hand object
+@return an output stream of the entire vector of Cards within the Hand that can be used for file or console output
+*/
 ostream& operator<<(ostream& os, const Hand h)
 {
 	for (int i = 0; i < h.cards.size(); ++i)
