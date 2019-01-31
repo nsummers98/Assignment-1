@@ -63,7 +63,7 @@ int main() {
 		while ((res == 'y' || res == 'Y') && playerHand.get_value() <= 7.5)
 		{
 			cout << "\nYour cards:" << endl;
-			playerHand.print_hand();
+			cout << playerHand;
 			cout << "Your total is " << playerHand.get_value() << ". Do you want another card? (y/n) ";
 			cin >> res;
 			if (res == 'y' || res == 'Y')
@@ -85,7 +85,7 @@ int main() {
 			if (n > 0 && dealerHand.get_value() < 5.5)
 				dealerHand.deal_card();
 			cout << "\nDealer's cards: " << endl;
-			dealerHand.print_hand();
+			cout << dealerHand;
 			cout << "\nThe dealer's total is " << dealerHand.get_value() << "." << endl;
 			++n;
 			if (dealerHand.get_value() >= 5.5)

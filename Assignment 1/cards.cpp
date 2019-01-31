@@ -217,14 +217,6 @@ Hand::Hand()
 	cards.push_back(c);
 }
 
-void Hand::print_hand() const
-{
-	for (int i = 0; i < cards.size(); ++i)
-	{
-		int char_size = get_card(i).print_spanish_card().length() + get_card(i).print_english_card().length();
-		cout << "	" << get_card(i).print_spanish_card() << setw(38 - char_size) << "(" << get_card(i).print_english_card() << ").\n";
-	}
-}
 
 Card Hand::get_card(int n) const
 {
@@ -296,11 +288,11 @@ void Player::print_to_doc(int game, int bet, int win, Hand p, Hand d)
 	fout << "Bet: " << bet << endl;
 	fout << endl;
 	fout << "Your cards:" << endl;
-	fout << p.print_hand();
+	fout << p;
 	fout << "Your total: " << p.get_value() << "." << endl;
 	fout << endl;
 	fout << "Dealer's cards:" << endl;
-	fout << d.print_hand();
+	fout << d;
 	fout << "Dealer's total is " << d.get_value() << "." << endl;
 	fout << endl;
 
@@ -345,4 +337,14 @@ int Player::lose(int m)
 {
 	money -= m;
 	return m;
+}
+
+ostream& operator<<(ostream& os, const Hand h)
+{
+	for (int i = 0; i < h.cards.size(); ++i)
+	{
+		int char_size = h.get_card(i).print_spanish_card().length() + h.get_card(i).print_english_card().length();
+		os << "	" << h.get_card(i).print_spanish_card() << setw(38 - char_size) << "(" << h.get_card(i).print_english_card() << ").\n";
+	}
+	return os;
 }

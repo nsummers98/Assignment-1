@@ -55,12 +55,13 @@ public:
 	Hand();
 
 	// You decide what functions you'll need...
-	void print_hand() const;
 	Card get_card(int n) const;
 	double get_value() const;
 	int get_size() const;
 
 	void deal_card();
+
+	friend ostream& operator<<(ostream& os, const Hand h);
 
 private:
 	vector<Card> cards;
