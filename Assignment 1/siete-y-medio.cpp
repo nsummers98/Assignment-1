@@ -13,7 +13,6 @@ using namespace std;
 // Non member functions declarations (if any)
 int winner(Hand h1, Hand h2);
 void waitForInput();
-void printToDoc(int game, int bet, Player p1, Hand p, Hand d);
 
 
 // Non member functions implementations (if any)
@@ -36,37 +35,6 @@ void waitForInput()
 		cout << "\nPress enter key to continue . . .";
 	} while (cin.get() != '\n');
 	cin.ignore();
-}
-
-void printToDoc(int game, int bet, Player p1, Hand p, Hand d)
-{
-	
-	ofstream fout;
-	
-	if (game == 1)
-		fout.open("gamelog.txt");
-	else if (game > 1)
-		fout.open("gamelog.txt", fstream::in | fstream::out | fstream::app);
-
-	fout << "-----------------------------------------------" << endl;
-	fout << endl;
-	fout << "Game number: " << game << "		Money left: $" << p1.get_balance() << endl;
-	fout << "Bet: " << bet << endl;
-	fout << endl;
-	fout << "Your cards:" << endl;
-	fout << p.print_hand();
-	fout << "Your total: " << p.get_value() << "." << endl;
-	fout << endl;
-	fout << "Dealer's cards:" << endl;
-	fout << d.print_hand();
-	fout << "Dealer's total is " << d.get_value() << "." << endl;
-	fout << endl;
-
-	if ((p1.get_balance()-bet <= 0 && (winner(p, d) != 0 && winner(p,d) != 3)) || (p1.get_balance() >= 900 && (winner(p,d) != 1 && winner(p,d) != 2)))
-	{
-		fout << "-----------------------------------------------";
-		fout.close();
-	}
 }
 
 
@@ -123,11 +91,11 @@ int main() {
 			if (dealerHand.get_value() >= 5.5)
 				break;
 		}
-
-		printToDoc(gamecount, bet, p1, playerHand, dealerHand);
 		
 		int win = winner(playerHand, dealerHand);
+		p1.print_to_doc(gamecount, bet, win, playerHand, dealerHand);
 		cout << endl;
+
 		if (win == 0)
 		{
 			cout << "You win $" << bet << ". Congratulations.\n" << endl;
