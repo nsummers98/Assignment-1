@@ -91,9 +91,11 @@ int main() {
 			if (dealerHand.get_value() >= 5.5)
 				break;
 		}
-
+		
 		int win = winner(playerHand, dealerHand);
+		p1.print_to_doc(gamecount, bet, win, playerHand, dealerHand);
 		cout << endl;
+
 		if (win == 0)
 		{
 			cout << "You win $" << bet << ". Congratulations.\n" << endl;

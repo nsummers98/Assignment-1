@@ -280,6 +280,37 @@ int Player::get_balance() const
 	return money;
 }
 
+void Player::print_to_doc(int game, int bet, int win, Hand p, Hand d)
+{
+
+	ofstream fout;
+
+	if (game == 1)
+		fout.open("gamelog.txt");
+	else if (game > 1)
+		fout.open("gamelog.txt", fstream::in | fstream::out | fstream::app);
+
+	fout << "-----------------------------------------------" << endl;
+	fout << endl;
+	fout << "Game number: " << game << "		Money left: $" << money << endl;
+	fout << "Bet: " << bet << endl;
+	fout << endl;
+	fout << "Your cards:" << endl;
+	fout << p.print_hand();
+	fout << "Your total: " << p.get_value() << "." << endl;
+	fout << endl;
+	fout << "Dealer's cards:" << endl;
+	fout << d.print_hand();
+	fout << "Dealer's total is " << d.get_value() << "." << endl;
+	fout << endl;
+
+	if ((money - bet <= 0 && (win != 0 && win != 3)) || (money + bet >= 900 && (win != 1 && win != 2)))
+	{
+		fout << "-----------------------------------------------";
+		fout.close();
+	}
+}
+
 /*
 Function sees if Player has enough money to make bet
 @param m represents the amount the player wants to bet

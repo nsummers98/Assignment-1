@@ -77,6 +77,8 @@ public:
 	// You decide what functions you'll need...
 	int get_balance() const;
 
+	void print_to_doc(int game, int bet, int win, Hand p, Hand d);
+
 	int bet(int m);
 	int win(int m);
 	int lose(int m);
