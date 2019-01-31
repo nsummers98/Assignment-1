@@ -7,8 +7,8 @@ itself differs from Blackjack in that the face cards are only worth half a point
 to get as close to seven and a half points as possible without going over.
 
 ### External Reading
-- [Wikipedia Article](https://en.wikipedia.org/wiki/Sette_e_mezzo)
 - [Initial Assignment](https://www.pic.ucla.edu/~rsalazar/pic10c/assignments/hw1/)
+- [Wikipedia Article](https://en.wikipedia.org/wiki/Sette_e_mezzo)
 
 ### Further Comments
 
